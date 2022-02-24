@@ -27,15 +27,15 @@ jobs:
     - name: Create Templates Release
       uses: ncipollo/release-action@v1.7.3
       with:
-        artifacts: ~/teamsfx_templates/*.zip
+        artifacts: ./*.zip
         name: 'Release for templates ${{ github.ref }}'
         token: ${{ secrets.github_token }}
     - name: Generate Tag List
-      run: git tag | grep templates@ > ~/template-tags.txt
+      run: git tag | grep templates@ > ./template-tags.txt
     - name: Update Template Tag list Release
       uses: ncipollo/release-action@v1.7.3
       with:
-        artifacts: ~/template-tags.txt
+        artifacts: ./template-tags.txt
         name: 'Template Tag List'
         body: 'Release to maintain template tag list.'
         token: ${{ secrets.github_token }}
